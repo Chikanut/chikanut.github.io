@@ -3421,42 +3421,10 @@ const RAW_JSON_TEXT = `{
   }
 
   // update progress bar
-  // --- ЗАМІНІТЬ ВАШУ ІСНУЮЧУ ФУНКЦІЮ updateProgress ---
-
-function updateProgress() {
-    // 1. Кількість доступних питань: беремо довжину поточного, відфільтрованого масиву
-    const totalQuestions = questions.length; 
-    
-    // 2. Кількість відповідей: беремо довжину масиву history
-    const answered = history.length;
-    
-    // 3. Кількість правильних відповідей
-    const correct = history.filter(item => item.correct).length;
-    
-    // 4. Відсоток успішності: рахуємо від загальної кількості ВІДПОВІДЕЙ
-    const successRate = answered > 0 ? Math.round((correct / answered) * 100) : 0;
-
-    // 5. Оновлення елементів UI
-    const progressText = document.getElementById('progressText');
-    const progressLine = document.getElementById('progressLine');
-    const statsPassed = document.getElementById('statsPassed');
-    const statsTotal = document.getElementById('statsTotal');
-    const statsPercent = document.getElementById('statsPercent');
-
-    // Оновлюємо текст у статистиці
-    statsPassed.textContent = correct; 
-    statsTotal.textContent = answered; // Тут показуємо скільки разів відповіли, а не загальну кількість
-
-    // Оновлюємо індикатор прогресу
-    const progressValue = totalQuestions > 0 ? Math.round((answered / totalQuestions) * 100) : 0;
-    progressText.textContent = `${answered} з ${totalQuestions} (${progressValue}%)`;
-    progressLine.style.width = `${progressValue}%`;
-    
-    // Якщо у вас є окремий елемент для відсотка успішності, оновлюємо його
-    if (statsPercent) {
-        statsPercent.textContent = `${successRate}%`;
-    }
-}
+  function updateProgress() {
+    const pct = pool.length ? Math.round((currentIndex / pool.length) * 100) : 0;
+    globalProgress.style.width = pct + '%';
+  }
 
   // finish test and show results
   function finishTest(reason) {
@@ -3697,7 +3665,15 @@ function updateProgress() {
   }
 
   // --- Event Listeners ---
-  startBtn.addEventListener('click', startTest);
+  startBtn.addEventListener('click', () => {
+    // ... ваш код для налаштування пулу, індексів, таймера ...
+
+    // === ВСТАВИТИ ЦЕ ===
+    history = []; // Очистити історію поточного проходження
+    // localStorage.setItem('history', JSON.stringify([])); // Якщо ви використовуєте localStorage для історії
+
+    startTest();
+});
   nextQBtn.addEventListener('click', handleNextQuestion);
   backToSetupFromTest.addEventListener('click', () => {
     stopTimer();
