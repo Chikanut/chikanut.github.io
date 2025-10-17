@@ -3355,8 +3355,6 @@ const RAW_JSON_TEXT = `{
       div.classList.add('correct');
       correctCount++;
       recordQuestionStat(question.id, false);
-      // correct answer: move to next immediately (as per original logic for quick flow)
-      currentIndex++;
       updateMeta();
       updateProgress();
       // Show comment if available
