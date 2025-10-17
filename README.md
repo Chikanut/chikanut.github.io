@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="uk">
 <head>
 <meta charset="utf-8" />
