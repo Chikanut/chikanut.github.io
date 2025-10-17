@@ -69,6 +69,48 @@
   .hint{font-size:12px;color:var(--muted)}
   .flex{display:flex;gap:8px;align-items:center; flex-wrap: wrap;}
   .answer-comment{margin-top:12px;padding:12px;border-radius:8px;background:rgba(255,255,255,0.02);border-left:4px solid var(--accent);font-size:14px;line-height:1.5;display:none}
+  /* Стилі для основного контейнера статистики */
+.stats-section {
+    background: var(--card, #111827); /* Використовувати змінну, або #111827 як запасний варіант */
+    color: #e6eef8; /* Світлий колір тексту */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 25px;
+}
+
+/* Стилі для таблиць всередині статистики */
+.stats-table table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Фон для таблиць, якщо вони стали білими */
+    background: var(--panel, #0b1220); 
+    color: #e6eef8;
+    border-radius: 6px;
+    overflow: hidden; /* Для коректного відображення border-radius */
+}
+
+/* Стилі для рядків і комірок таблиці */
+.stats-table th, .stats-table td {
+    padding: 10px;
+    border: 1px solid var(--glass, rgba(255, 255, 255, 0.1));
+    text-align: left;
+}
+
+/* Колір заголовків таблиці */
+.stats-table th {
+    background: var(--bg, #0f1724); /* Трохи темніший фон */
+    font-weight: 600;
+}
+
+/* Фон для рядків, щоб вони не були білими */
+.stats-table tr:nth-child(even) {
+    background-color: var(--panel, #0b1220);
+}
+
+.stats-table tr:nth-child(odd) {
+    background-color: var(--card, #111827);
+}
   @media (max-width:900px){.row{flex-direction:column}.col.small{flex:unset}}
 </style>
 </head>
