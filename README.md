@@ -3663,15 +3663,7 @@ const RAW_JSON_TEXT = `{
   }
 
   // --- Event Listeners ---
-  startBtn.addEventListener('click', () => {
-    // ... ваш код для налаштування пулу, індексів, таймера ...
-
-    // === ВСТАВИТИ ЦЕ ===
-    history = []; // Очистити історію поточного проходження
-    // localStorage.setItem('history', JSON.stringify([])); // Якщо ви використовуєте localStorage для історії
-
-    startTest();
-});
+  startBtn.addEventListener('click', startTest);
   nextQBtn.addEventListener('click', handleNextQuestion);
   backToSetupFromTest.addEventListener('click', () => {
     stopTimer();
